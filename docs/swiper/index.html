@@ -11,13 +11,18 @@
   <h1>Swiper 8.4.5 カルーセル検証</h1>
   <p>インジケーターのaria-currentの有無と、スライドの送り枚数を比較します。</p>
   <ul>
-        <li><a href="1-1.html">1-1. 1枚表示・フェード・aria-currentあり</a></li>
-        <li><a href="1-2.html">1-2. 1枚表示・フェード・aria-currentなし</a></li>
-        <li><a href="2-1.html">2-1. 4枚送り・aria-currentあり</a></li>
-        <li><a href="2-2.html">2-2. 4枚送り・aria-currentなし</a></li>
+        <li><a href="1-1.html">1-1. 1枚表示・フェード・標準pagination・aria-currentあり</a></li>
+        <li><a href="1-2.html">1-2. 1枚表示・フェード・標準pagination・aria-current付与後に削除</a></li>
+        <li><a href="1-3.html">1-3. 1枚表示・フェード・独自pagination・aria-currentなし</a></li>
+        <li><a href="1-4.html">1-4. 1枚表示・フェード・タブ形式・aria-selected</a></li>
+        <li><a href="2-1.html">2-1. 4枚送り・標準pagination・aria-currentあり</a></li>
+        <li><a href="2-2.html">2-2. 4枚送り・標準pagination・aria-current付与後に削除</a></li>
+        <li><a href="2-3.html">2-3. 4枚送り・独自pagination・aria-currentなし</a></li>
+        <li><a href="2-4.html">2-4. 4枚送り・タブ形式・aria-selected</a></li>
   </ul>
   <p>全ページ共通：12枚、3000ms間隔で自動再生、末尾から先頭に戻る。768px未満は1枚表示・1枚送りです。4枚送り版は768px以上で4枚表示・4枚送りです。</p>
-  <p>1-1・1-2はPC／SPともにフェード切り替え、2-1・2-2はPC／SPともに横スライドです。</p>
+  <p>1-1〜1-4はPC／SPともにフェード切り替え、2-1〜2-4はPC／SPともに横スライドです。</p>
+  <p>標準paginationはSwiperによる属性付与あり／付与後に削除の2種類、独自paginationは最初から属性を付けないボタン、タブ形式はaria-selectedで状態を表す実装です。</p>
   <p>Tabキーで前後ボタンやインジケーターへ移動し、Enter／Spaceキーで操作できます。スワイプにも対応します。</p>
   <p>画面幅を切り替えたとき、インジケーターの数と現在位置の状態も確認してください。音声読み上げは実際のスクリーンリーダーで比較してください。</p>
 </main></body>

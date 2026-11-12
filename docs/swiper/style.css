@@ -15,11 +15,14 @@ li { margin-block: 8px; }
 .controls { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
 .controls > button, .autoplay-toggle { flex-shrink: 0; padding: 10px 16px; border: 1px solid #52677f; border-radius: 6px; background: white; color: #172538; font: inherit; cursor: pointer; }
 .controls > button:disabled { opacity: .45; cursor: default; }
-.controls .swiper-pagination { position: static; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-.controls .swiper-pagination-bullet { width: 36px; height: 36px; margin: 0; border: 1px solid #52677f; border-radius: 50%; background: white; color: #172538; opacity: 1; font: inherit; cursor: pointer; }
-.controls .swiper-pagination-bullet-active { background: #172538; color: white; border: 3px solid #172538; font-weight: bold; }
+.controls .swiper-pagination, .custom-pagination { position: static; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.controls .swiper-pagination-bullet, .custom-pagination .swiper-pagination-bullet { width: 36px; height: 36px; margin: 0; border: 1px solid #52677f; border-radius: 50%; background: white; color: #172538; opacity: 1; font: inherit; cursor: pointer; }
+.controls .swiper-pagination-bullet-active, .custom-pagination .swiper-pagination-bullet-active { background: #172538; color: white; border: 3px solid #172538; font-weight: bold; }
 :focus-visible { outline: 3px solid #c53d00; outline-offset: 3px; }
-@media (max-width: 480px) { .controls { flex-wrap: wrap; justify-content: space-between; } .controls .swiper-pagination { order: 3; width: 100%; } }
+@media (max-width: 480px) { .controls { flex-wrap: wrap; justify-content: space-between; } .controls .swiper-pagination, .custom-pagination { order: 3; width: 100%; } }
 @media (prefers-reduced-motion: reduce) { .swiper-wrapper { transition-duration: 0ms !important; } }
 
 .autoplay-toggle { margin-top: 20px; }
+
+.panel-cards { display: grid; grid-template-columns: repeat(var(--panel-columns, 1), minmax(0, 1fr)); gap: 16px; }
+[role="tablist"] { margin-block: 20px; }

@@ -5,6 +5,7 @@
   }
   const group = Number(document.body.dataset.group);
   const useCurrent = document.body.dataset.current === "true";
+  const custom = document.body.dataset.pagination === "custom";
   const swiper = new Swiper(".swiper", {
     effect: document.body.dataset.effect || "slide",
     fadeEffect: { crossFade: true },
@@ -22,7 +23,7 @@
     watchSlidesProgress: true,
     breakpoints: { 768: { slidesPerView: group, slidesPerGroup: group } },
     navigation: { prevEl: ".previous", nextEl: ".next" },
-    pagination: {
+    pagination: custom ? false : {
       el: ".swiper-pagination",
       clickable: true,
       renderBullet(index, className) {
@@ -52,9 +53,31 @@
   });
   function syncState() {
     // Register after construction so Swiper's a11y handler runs first.
-    swiper.pagination.bullets.each((bullet) => {
-      if (!useCurrent) bullet.removeAttribute("aria-current");
-    });
+    if (custom) {
+      const el = document.querySelector(".custom-pagination");
+      const groupSize = Number(swiper.params.slidesPerGroup);
+      const count = Math.ceil(swiper.slides.length / groupSize);
+      if (el.children.length !== count) {
+        el.replaceChildren(...Array.from({ length: count }, (_, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "swiper-pagination-bullet";
+          button.textContent = index + 1;
+          const start = index * groupSize + 1;
+          const end = Math.min(swiper.slides.length, start + groupSize - 1);
+          button.setAttribute("aria-label", `スライド${start}${start === end ? "" : `〜${end}`}を表示`);
+          button.addEventListener("click", () => swiper.slideTo(index * groupSize));
+          return button;
+        }));
+      }
+      [...el.children].forEach((button, index) => {
+        button.classList.toggle("swiper-pagination-bullet-active", index === Math.floor(swiper.activeIndex / groupSize));
+      });
+    } else {
+      swiper.pagination.bullets.each((bullet) => {
+        if (!useCurrent) bullet.removeAttribute("aria-current");
+      });
+    }
     const start = swiper.activeIndex + 1;
     const end = Math.min(swiper.slides.length, start + Number(swiper.params.slidesPerView) - 1);
     document.querySelector("#status").textContent =
@@ -62,5 +85,6 @@
   }
   swiper.on("paginationUpdate", syncState);
   swiper.on("resize", syncState);
+  if (custom) swiper.on("slideChange", syncState);
   syncState();
 })();
