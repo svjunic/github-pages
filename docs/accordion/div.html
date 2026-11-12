@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>アコーディオン：div＋JavaScript</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>アコーディオン：div＋JavaScript</h1>
+      <p>各項目は独立して開閉できます。</p>
+      <section aria-labelledby="check-heading">
+        <h2 id="check-heading">確認する操作</h2>
+        <ul>
+          <li>見出しをクリック／タップして開閉する。</li>
+          <li>Tab／Shift＋Tabで移動し、Enter／Spaceで開閉する。</li>
+          <li>閉じた項目内のリンクや入力欄にTabで移動しないことを確認する。</li>
+          <li>VoiceOverなどで見出しと開閉状態の読み上げを比較する。</li>
+        </ul>
+        <p>ブラウザーや支援技術によって挙動・読み上げは異なります。JavaScriptを無効にして再読み込みすると、div版は開閉できず、details版は引き続き操作できます。</p>
+      </section>
+
+      <section aria-labelledby="custom-heading">
+        <h2 id="custom-heading">div＋JavaScript</h2>
+        <p>見出し内のdivにrole="button"とtabindex="0"を設定しています。aria-expandedとhiddenを同期し、aria-controlsでパネルを関連付け、パネルはaria-labelledbyで見出しを参照します。</p>
+        <noscript><p>JavaScriptが無効のため、この実装は操作できません。</p></noscript>
+        <div class="accordion">
+          <div role="heading" aria-level="3"><div class="trigger" role="button" tabindex="0" aria-expanded="false" aria-controls="custom-panel-1" id="custom-trigger-1">項目1：リンクと入力欄</div></div>
+          <div class="panel" id="custom-panel-1" role="region" aria-labelledby="custom-trigger-1" hidden>
+            <p>項目1の内容です。開いたときだけ、次の要素へTabで移動できます。</p>
+            <p><a href="#check-heading">確認する操作へ移動</a></p>
+            <label for="custom-input">メモ（div版）</label>
+            <input id="custom-input" type="text" />
+          </div>
+        </div>
+        <div class="accordion">
+          <div role="heading" aria-level="3"><div class="trigger" role="button" tabindex="0" aria-expanded="true" aria-controls="custom-panel-2" id="custom-trigger-2">項目2：最初から開いた項目</div></div>
+          <div class="panel" id="custom-panel-2" role="region" aria-labelledby="custom-trigger-2">
+            <p>項目2の内容です。初期状態で開いています。項目1を開いても、この項目は閉じません。</p>
+            <button type="button">フォーカス確認用ボタン（div版）</button>
+          </div>
+        </div>
+      </section>
+      <p><a href="#">ページの先頭へ</a>（アコーディオンの後のTab移動確認用）</p>
+      <nav aria-label="サンプルページ">
+        <a href="./index.html">アコーディオンの一覧へ</a> ／ <a href="./details.html">details／summary版へ</a>
+      </nav>
+    </main>
+  </body>
+</html>
