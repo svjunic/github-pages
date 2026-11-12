@@ -3,6 +3,7 @@
     document.querySelector("#load-error").hidden = false;
     return;
   }
+  const stateAttribute = document.body.dataset.tabState || "selected";
   const cards = [...document.querySelectorAll(".card")].map(card => card.cloneNode(true));
   const wrapper = document.querySelector(".swiper-wrapper");
   const tablist = document.querySelector('[role="tablist"]');
@@ -20,7 +21,11 @@
   function sync() {
     const active = swiper.activeIndex;
     [...tablist.children].forEach((tab, index) => {
-      tab.setAttribute("aria-selected", String(index === active));
+      if (stateAttribute === "selected") tab.setAttribute("aria-selected", String(index === active));
+      if (stateAttribute === "current") {
+        if (index === active) tab.setAttribute("aria-current", "true");
+        else tab.removeAttribute("aria-current");
+      }
       tab.tabIndex = index === active ? 0 : -1;
       tab.classList.toggle("swiper-pagination-bullet-active", index === active);
     });
