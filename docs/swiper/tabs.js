@@ -79,7 +79,7 @@
       spaceBetween: 16,
       speed: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 350,
       loop: false,
-      autoplay: playing ? { delay: 3000, disableOnInteraction: false, stopOnLastSlide: false, waitForTransition: false } : false,
+      autoplay: { enabled: playing, delay: 3000, disableOnInteraction: false, stopOnLastSlide: false, waitForTransition: false },
       pagination: false,
       navigation: { prevEl: ".previous", nextEl: ".next" },
       a11y: {

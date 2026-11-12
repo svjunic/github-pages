@@ -15,6 +15,7 @@
     speed: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 350,
     loop: false,
     autoplay: {
+      enabled: true,
       delay: 3000,
       disableOnInteraction: false,
       stopOnLastSlide: false,
