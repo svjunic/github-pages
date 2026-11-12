@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2-1. 4枚送り・aria-currentあり | Swiper 8.4.5 検証</title>
+  <link rel="stylesheet" href="vendor/swiper-bundle.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="vendor/swiper-bundle.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body data-group="4" data-current="true">
+<main>
+  <a href="./">Swiper検証一覧へ</a>
+  <h1>2-1. 4枚送り・aria-currentあり</h1>
+  <p>Swiper 8.4.5 ／ PC：4枚表示・4枚送り ／ SP（768px未満）：1枚表示・1枚送り</p>
+  <p>インジケーターのaria-current：<strong>現在位置にtrueを付与</strong>。3000ms間隔で自動再生・末尾から先頭に戻る。</p>
+  <section aria-label="検証用カルーセル">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">01</span><h2>スライド1</h2><p>読み上げ検証用のコンテンツ1です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">02</span><h2>スライド2</h2><p>読み上げ検証用のコンテンツ2です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">03</span><h2>スライド3</h2><p>読み上げ検証用のコンテンツ3です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">04</span><h2>スライド4</h2><p>読み上げ検証用のコンテンツ4です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">05</span><h2>スライド5</h2><p>読み上げ検証用のコンテンツ5です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">06</span><h2>スライド6</h2><p>読み上げ検証用のコンテンツ6です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">07</span><h2>スライド7</h2><p>読み上げ検証用のコンテンツ7です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">08</span><h2>スライド8</h2><p>読み上げ検証用のコンテンツ8です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">09</span><h2>スライド9</h2><p>読み上げ検証用のコンテンツ9です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">10</span><h2>スライド10</h2><p>読み上げ検証用のコンテンツ10です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">11</span><h2>スライド11</h2><p>読み上げ検証用のコンテンツ11です。</p></a></div>
+        <div class="swiper-slide"><a class="card" href="../"><span class="number">12</span><h2>スライド12</h2><p>読み上げ検証用のコンテンツ12です。</p></a></div>
+      </div>
+    </div>
+    <button type="button" class="autoplay-toggle">自動再生を停止</button>
+    <div class="controls">
+      <button type="button" class="previous">前へ</button>
+      <div class="swiper-pagination" role="group" aria-label="表示するグループを選択"></div>
+      <button type="button" class="next">次へ</button>
+    </div>
+  </section>
+  <p id="status"></p>
+  <p id="load-error" role="alert" hidden>Swiperを読み込めませんでした。ページを再読み込みしてください。</p>
+  <h2>確認ポイント</h2>
+  <ul>
+    <li>前後ボタン、インジケーター、スワイプで横に切り替わること。</li>
+    <li>インジケーターをTabキーで選び、Enter／Spaceキーで切り替えたときの読み上げ。</li>
+    <li>768pxを境に画面幅を変えたときの送り枚数、インジケーター数、現在位置。</li>
+  </ul>
+  <p>同じ表示パターンの「あり」「なし」間ではaria-current以外の設定を共通にしています。Swiper標準のa11y機能は有効です。「なし」版は標準が付けるaria-currentだけを更新直後に除去します。</p>
+  <nav aria-label="検証バリエーション"><ul>
+        <li><a href="1-1.html">1-1. 1枚表示・フェード・aria-currentあり</a></li>
+        <li><a href="1-2.html">1-2. 1枚表示・フェード・aria-currentなし</a></li>
+        <li><a href="2-1.html">2-1. 4枚送り・aria-currentあり</a></li>
+        <li><a href="2-2.html">2-2. 4枚送り・aria-currentなし</a></li>
+  </ul></nav>
+</main>
+</body>
+</html>
